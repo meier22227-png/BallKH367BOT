@@ -13,20 +13,13 @@ const mainKeyboard = () => {
 
 // Start Entry
 bot.start((ctx) => {
- // Make sure Keyboard is imported at the top of your index.js:
-// const { Keyboard } = require('grammy');
-
-ctx.reply(
-  `⚽️ Welcome to the **Football Pitch & Rules Master**, ${ctx.from.first_name || 'Player'}!
+  ctx.reply(
+    `⚽️ Welcome to the **Football Pitch & Rules Master**, ${ctx.from.first_name || 'Player'}!
 
 I am your interactive offline dictionary for official pitch dimensions and match officiating regulations. Select an option below to clear up any pitch disputes!`,
-  {
-    reply_markup: new Keyboard()
-      .text('📐 Pitch Dimensions').text('📋 Match Regulations').row()
-      .text('❓ Help & FAQs')
-      .resized()
-  }
-);
+    mainKeyboard()
+  );
+});
 
 // Pitch Dimensions Module
 bot.hears('📏 Pitch Dimensions', (ctx) => {
