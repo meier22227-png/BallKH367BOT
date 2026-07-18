@@ -92,3 +92,39 @@ bot.action('rule_handball', (ctx) => {
     '🏆 *Attacker rule:* If an attacking player scores directly using their arm, it is disallowed instantly—even if accidental.'
   );
 });
+
+// VAR Interventions Module
+bot.hears('🖥 VAR Protocols', (ctx) => {
+  ctx.reply(
+    '🖥 *VAR Intervention Criteria:*\n\n' +
+    'The Video Assistant Referee can only support the on-pitch referee in four game-changing situations:\n\n' +
+    '1. ⚽️ *Goals & Build-up Offenses:* Checking fouls or offsides leading to a goal.\n' +
+    '2. 🟥 *Direct Red Cards:* Reviewing serious foul play or violent conduct.\n' +
+    '3. 🎯 *Penalty Decisions:* Verifying if a penalty was correctly awarded or denied.\n' +
+    '4. 🆔 *Mistaken Identity:* Ensuring the right player receives a yellow or red card.'
+  );
+});
+
+// Info Help Block
+bot.hears('❓ Help & Info', (ctx) => {
+  ctx.reply(
+    'ℹ️ *How to navigate the Rules Bot:*\n\n' +
+    '• Tap 📏 *Pitch Dimensions* for pitch layouts and meter metrics.\n' +
+    '• Tap 📕 *Complex Rules* to understand tricky game laws.\n' +
+    '• Tap 🖥 *VAR Protocols* to learn match video review limits.',
+    mainKeyboard()
+  );
+});
+
+// Smart Fallback Handling
+bot.on('text', (ctx) => {
+  ctx.reply('Please use the match official menu options below to inspect the football rules!', mainKeyboard());
+});
+
+// Smooth Railway termination cleanup
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
+bot.launch().then(() => {
+  console.log('📏 BallKH367 Rules Bot is running live on Railway!');
+});
