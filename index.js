@@ -13,10 +13,9 @@ const mainKeyboard = () => {
 
 // Start Entry
 bot.start((ctx) => {
-  ctx.reply(
-    ⚽️ Welcome to the **Football Pitch & Rules Master**, ${ctx.from.first_name || 'Player'}!\n\nI am your interactive offline dictionary for official pitch dimensions and match officiating regulations. Select an option below to clear up any pitch disputes!,
-    mainKeyboard()
-  );
+ ctx.reply("⚽️ Welcome to the **Football Pitch & Rules Master**, " + (ctx.from.first_name || 'Player') + "!\n\n" +
+"I am your interactive offline dictionary for official pitch dimensions and match officiating regulations. " +
+"Select an option below to clear up any pitch disputes!");
 });
 
 // Pitch Dimensions Module
